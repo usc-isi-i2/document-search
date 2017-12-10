@@ -1,0 +1,20 @@
+CREATE TABLE Files(
+  filename VARCHAR(100) PRIMARY KEY,
+  last_modified TIMESTAMP,
+  run_date TIMESTAMP,
+  keywords TEXT);
+
+CREATE TABLE FileSearch(
+ filename varchar(100),
+ search_date timestamp,
+ search_result varchar(900),
+ search_status Varchar(20),
+ PRIMARY KEY(filename,search_date,search_result),
+ FOREIGN KEY (filename) REFERENCES Files(filename));
+
+alter table filesearch
+ change search_date
+ search_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+create table login_details (username text, password text);
+insert into login_details (username, password) values ('user1','password1');
